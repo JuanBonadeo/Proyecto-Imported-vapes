@@ -17,12 +17,7 @@ import ColorPicker from '../ColorPicker/ColorPicker';
 export default function ProductInfo({ id, nombre, precio, img1, img2, img3, descripcion, descuento = 0, categoria, colors }) {
 
   const [index, setIndex] = useState(0);
-  const [indexColor, setIndexColor] = useState(0);
-  const [color, setColor] = useState(colors[indexColor]?.color || '');
-  const handleColor = (index) => {
-    setIndexColor(index)
-    setColor(colors[index].color)
-  }
+  
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
   };
@@ -33,11 +28,11 @@ export default function ProductInfo({ id, nombre, precio, img1, img2, img3, desc
   const useCart = () => {
     return useContext(CartContext)
   }
-  let img = colors[indexColor].img1
+  
   const { addItem, quantity, formatearMoneda, calcularDescuento } = useCart();
   const handleOnAdd = (quantity) => {
     const productToAdd = {
-      id, nombre, precio, quantity, img, descuento, color, indexColor
+      id, nombre, precio, quantity, img1, img2, descuento,  indexColor
     }
     addItem(productToAdd)
   }
@@ -52,7 +47,6 @@ export default function ProductInfo({ id, nombre, precio, img1, img2, img3, desc
           className="information">
           <h2>{nombre}</h2>
           <p>{descripcion}</p>
-          <ColorPicker colors={colors} color={color} action={handleColor} />
 
           {descuento !== 0 && (
             <div className="priceAddto">
@@ -79,19 +73,19 @@ export default function ProductInfo({ id, nombre, precio, img1, img2, img3, desc
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2, ease: "easeInOut", delay: 0.6, type: "tween" }}>
           <Carousel activeIndex={index} onSelect={handleSelect} className='carouselContainer'>
-            {colors[indexColor].img1 && (
+            {img1 && (
               <Carousel.Item interval={10000}>
-                <img className="infoImg" src={colors[indexColor].img1} alt="Product" />
+                <img className="infoImg" src={img1} alt="Product" />
               </Carousel.Item>
             )}
-            {colors[indexColor].img2 && (
+            {img2 && (
               <Carousel.Item interval={10000}>
-                <img className="infoImg" src={colors[indexColor].img2} alt="Product" />
+                <img className="infoImg" src={img2} alt="Product" />
               </Carousel.Item>
             )}
-            {colors[indexColor].img3 && (
+            {img3 && (
               <Carousel.Item interval={10000}>
-                <img className="infoImg" src={colors[indexColor].img3} alt="Product" />
+                <img className="infoImg" src={img3} alt="Product" />
               </Carousel.Item>
             )}
           </Carousel>

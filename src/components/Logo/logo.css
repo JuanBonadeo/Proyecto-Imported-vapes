@@ -2,13 +2,5 @@
     height: 70px;
     padding: 0;
     will-change: filter;
-    margin-right: 1em;
-    display: flex; 
-    justify-content: center;
-    align-items: center;
-    color: #dd00ff;
-    text-decoration: none;
-}
-.nu{
-    text-decoration: none;
+    
 }
