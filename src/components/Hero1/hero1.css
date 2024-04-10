@@ -25,48 +25,6 @@
 
 }
 
-.carousel.slide > div.carousel-indicators{
-    display: none;
-}
-@media (max-width: 1200px ){
-    
-    .hero3{
-        top: 300px;
-        margin-left: 43%;
-    }
-    .hero12{
-        top: 350px;
-    }
-}
-@media (max-width: 1000px ){
-    .hero3{
-        top: 200px;
-    }
-    .hero12{
-        top: 270px;
-    }
-    
-}
-@media (max-width: 720px ){
-    .hero3{
-        top: 80px;
-    }
-    .hero12{
-        top: 170px;
-    }
-}
-@media screen and (max-width: 550px) {
-   
-    .hero12{
-        top: 150px;
-    }
-    
-    
-}@media screen and (max-width: 400px) {
-    .hero12{
-        top: 100px;
-    }
-    
-    
-}
+
+
 

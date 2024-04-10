@@ -5,38 +5,32 @@ import Button from '../Button/Button';
 
 const Hero1 = () =>{
     return (
-      <Carousel interval={5000000}>
+      <Carousel interval={5000}>
         <Carousel.Item className='Hero1Container'>
           <img
             className="imgHero1"
-            src='https://firebasestorage.googleapis.com/v0/b/termomelga.appspot.com/o/heros%2Fhero1Mobile.jpg?alt=media&token=464481d1-1d29-44aa-8bcf-f5a17a24ea7b'
+            src='https://firebasestorage.googleapis.com/v0/b/import-vapes.appspot.com/o/productos%2Fhero1.jpg?alt=media&token=85dd53aa-8ad9-4891-9aa8-bc4969833886'
             alt="First-slide"
           />
-          <Carousel.Caption className='HeroCaption hero12'>
-            <Button label='Comprar' to='/productos' />
-          </Carousel.Caption>
+          
         </Carousel.Item> 
         
         <Carousel.Item className='Hero1Container'>
           <img
             className="imgHero1"
-            src='https://firebasestorage.googleapis.com/v0/b/termomelga.appspot.com/o/heros%2Fhero1.jpg?alt=media&token=403b9243-1506-4708-8c4e-bb1acc5b3a4c'
+            src='https://firebasestorage.googleapis.com/v0/b/import-vapes.appspot.com/o/productos%2Fhero2.jpg?alt=media&token=32d36539-be49-42c9-a5ba-412832d57b3c'
             alt="Second-slide"
           />
-          <Carousel.Caption className='HeroCaption hero3'>
-            <Button label='Ver Mates' to='/categoria/mates'  />
-          </Carousel.Caption>
+          
         </Carousel.Item>
 
         <Carousel.Item className='Hero1Container'>
           <img
             className="imgHero1 imgHero3"
-            src='https://firebasestorage.googleapis.com/v0/b/termomelga.appspot.com/o/heros%2Fhero2Mobile.jpg?alt=media&token=4cb2bbe6-1b10-4e1b-a40e-31911921aa98'
+            src='https://firebasestorage.googleapis.com/v0/b/import-vapes.appspot.com/o/productos%2Fhero3.jpg?alt=media&token=a2546d97-c5c3-4d73-8cfc-0fb80d8b72a3'
             alt="Third-slide"
           />
-          <Carousel.Caption className='HeroCaption hero12'>
-            <Button label='Ver Yerbas' to='/categoria/yerbas'  />
-          </Carousel.Caption>
+          
         </Carousel.Item> 
       </Carousel>
     );
