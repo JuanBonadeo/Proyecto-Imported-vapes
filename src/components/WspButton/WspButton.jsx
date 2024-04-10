@@ -4,7 +4,7 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 const  WspButton = () => {
   return (
-    <a className='btn-whatsapp' href='https://wa.me/543412524906'>
+    <a className='btn-whatsapp' href='https://wa.me/5493435409904'>
         <WhatsAppIcon/>
     </a>
   )
