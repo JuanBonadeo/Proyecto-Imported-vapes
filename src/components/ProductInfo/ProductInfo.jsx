@@ -32,7 +32,7 @@ export default function ProductInfo({ id, nombre, precio, img1, img2, img3, desc
   const { addItem, quantity, formatearMoneda, calcularDescuento } = useCart();
   const handleOnAdd = (quantity) => {
     const productToAdd = {
-      id, nombre, precio, quantity, img1, img2, descuento,  indexColor
+      id, nombre, precio, quantity, img1, descuento
     }
     addItem(productToAdd)
   }

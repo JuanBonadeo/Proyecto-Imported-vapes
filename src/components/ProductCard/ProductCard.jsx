@@ -13,7 +13,7 @@ export default function ProductCard({nombre,img1,img2,img3,precio,id, descuento 
   const { addItem, quantity, formatearMoneda, calcularDescuento} = useCart();
   const handleOnAdd = (quantity) => {
     const productToAdd = {
-        id, nombre, precio, quantity, img1,img2,img3, descuento, stock
+        id, nombre, precio, quantity, img1, descuento, stock
     }
     addItem(productToAdd)
   } 
