@@ -14,15 +14,11 @@
     margin: 0 auto;
     width: 100%;
 }
-.hero3{
-    position: absolute;
-    top: 400px;
-    margin-left: 40%;
-}
-.hero12{
-    position: absolute;
-    top: 80%;
 
+@media screen and (max-width: 768px){
+    .carousel.slide > div.carousel-indicators{
+        display: none;
+    }
 }
 
 

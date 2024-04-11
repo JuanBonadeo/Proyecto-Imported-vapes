@@ -21,7 +21,7 @@ const Footer = () => {
                 <Logo className='logo light' />
             </div>
             <div className='footer2'>
-                <a href='https://www.instagram.com/termosmelga/'><InstagramIcon/></a>
+                <a href='https://www.instagram.com/import.vape'><InstagramIcon/></a>
                 <a><FacebookIcon/></a>
                 <a href='https://github.com/JuanBonadeo'><GitHubIcon/></a>
                 <a><LinkedInIcon/></a>
