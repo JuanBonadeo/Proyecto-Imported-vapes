@@ -27,3 +27,19 @@ form{
     align-items: center;
     justify-content: center;
 }
+@media screen and (max-width: 768px){
+    form{
+        font-size: 1em;
+    }.form{
+        gap: .7em;
+    }
+    
+}
+@media screen and (max-width: 480px){
+    form{
+        font-size: .85em;
+    }.form{
+        gap: 1em;
+    }
+    
+}

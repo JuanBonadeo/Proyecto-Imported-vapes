@@ -10,16 +10,18 @@ const FinishPurchase = () => {
         return useContext(CartContext)
     }
     const { cart, total, calcularDescuento, formatearMoneda } = useCart();
-    const nombre = document.getElementById('name');
-    const pago = document.getElementById('payment');
-    const entrega = document.getElementById('entrega');
-    const domicilio = document.getElementById('address');
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
 
     const buyCart = (e) => {
+        const nombre = document.getElementById('name').value;
+        const pago = document.getElementById('payment').value;
+        const entrega = document.getElementById('entrega').value;
+        const domicilio = document.getElementById('address').value;
+        let totalConEnvio = 0;
         e.preventDefault();
         Swal.fire({
             title: 'Confirmar compra',
@@ -30,13 +32,13 @@ const FinishPurchase = () => {
             cancelButtonText: 'Cancelar',
         }).then((result) => {
             if (result.isConfirmed) {
-                let mensajePedido = 'Nombre y Apellido: ' + nombre.value + '\n';
-                mensajePedido += 'Metodo de Pago: ' + pago.value + '\n';
-                mensajePedido += 'Metodo de Entrega: ' + entrega.value + '\n';
-                mensajePedido += 'Domicilio: ' + domicilio.value + '\n\n';
+                let mensajePedido = 'Nombre y Apellido: ' + nombre + '\n';
+                mensajePedido += 'Metodo de Pago: ' + pago + '\n';
+                mensajePedido += 'Metodo de Entrega: ' + entrega + '\n';
+                mensajePedido += 'Domicilio: ' + domicilio + '\n\n';
                 if (entrega === 'envio') {
                     mensajePedido += 'Costo de envio: $8000\n\n';
-                    let totalConEnvio = 8000 + total;
+                    totalConEnvio = 8000 + total;
                 }
                 mensajePedido += 'pedido:\n';
                 cart.forEach((prod) => {
@@ -76,7 +78,7 @@ const FinishPurchase = () => {
     return (
         <div className="containerP">
             <h1>Completa tu Pedido</h1>
-            <form onSubmit={(e) => { e.preventDefault(); buyCart(); }}>
+            <form onSubmit={(e) => { e.preventDefault(); buyCart(e); }}>
                 <div className="form">
                     <div className="form-group">
                         <label htmlFor="name">Nombre y Apellido:</label>
@@ -85,7 +87,7 @@ const FinishPurchase = () => {
                     <div className="form-group">
                         <label htmlFor='payment'>Método de Pago:</label>
                         <select name="payment" id="payment" required>
-                            <option value="transf">Transf. Bancaria</option>
+                            <option value="transferencia">Transf. Bancaria</option>
                             <option value="efectivo">Efectivo</option>
                             <option value="tarjeta">Tarjeta</option>
                         </select>
@@ -99,11 +101,11 @@ const FinishPurchase = () => {
                     </div>
                     <div className="form-group">
                         <label htmlFor="address">Domicilio:</label>
-                        <input type="text" id="address" name="address" required/>
+                        <input type="text" id="address" name="address" required />
                     </div>
                 </div>
 
-                <h4>Total Estimado: {`${formatearMoneda(total)} + envío`}</h4>
+                <h4>Total Estimado:<br></br> {`${formatearMoneda(total)} + envío`}</h4>
                 <button className="Button" type='submit'>Comprar</button>
             </form>
         </div>
