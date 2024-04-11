@@ -22,6 +22,7 @@ const FinishPurchase = () => {
         const entrega = document.getElementById('entrega').value;
         const domicilio = document.getElementById('address').value;
         let totalConEnvio = 0;
+        let precioEnvio = 9000
         e.preventDefault();
         Swal.fire({
             title: 'Confirmar compra',
@@ -37,16 +38,19 @@ const FinishPurchase = () => {
                 mensajePedido += 'Metodo de Entrega: ' + entrega + '\n';
                 mensajePedido += 'Domicilio: ' + domicilio + '\n\n';
                 if (entrega === 'envio') {
-                    mensajePedido += 'Costo de envio: $8000\n\n';
-                    totalConEnvio = 8000 + total;
+                    mensajePedido += 'Costo de envio: $9000\n\n';
+                    totalConEnvio = total + precioEnvio;
                 }
                 mensajePedido += 'pedido:\n';
                 cart.forEach((prod) => {
                     mensajePedido += `*${prod.nombre}*  Cantidad: *${prod.quantity}* Precio: *${calcularDescuento(prod.precio * prod.quantity, prod.descuento)}*\n`;
                 });
                 mensajePedido += `\nTotal: *${formatearMoneda(total)}*`;
-                if (entrega === 'envio') {
+                if (entrega === 'envio' && total >= 30000) {
+                    totalConEnvio = total - precioEnvio;
                     mensajePedido += `\nTotal Con Envio: *${formatearMoneda(totalConEnvio)}*`;
+                } else {
+                    mensajePedido += `\nTotal Con Envio: *${formatearMoneda(total)}*`;
                 }
 
                 // Completar con el número de WhatsApp
@@ -105,7 +109,9 @@ const FinishPurchase = () => {
                     </div>
                 </div>
 
-                <h4>Total Estimado:<br></br> {`${formatearMoneda(total)} + envío`}</h4>
+                <h4>Total Estimado: {`${formatearMoneda(total)} `}<br></br>
+                Envio gratis llevando mas de 30.000$ en productos.
+                </h4>
                 <button className="Button" type='submit'>Comprar</button>
             </form>
         </div>
