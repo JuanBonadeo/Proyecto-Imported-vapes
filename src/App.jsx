@@ -9,6 +9,7 @@ import Cart from './components/Cart/Cart'
 import ProductInfoView from './components/ProductInfo/ProudctInfoView'
 import ProductsContainer from './components/ProductsContainer/ProductsContainer'
 import FinishPurchase from './components/FinishPurchase/FinishPurchase'
+import Admin from './components/Admin/Admin'
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/carrito" element={<Cart/>}/>
           <Route path="/productos" element={<ProductsContainer/>}/>
           <Route path="/terminarcompra" element={<FinishPurchase/>}/>
+          <Route path='/admin123' element={<Admin/>}/>
           
         </Routes>  
       </div>
