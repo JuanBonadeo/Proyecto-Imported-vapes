@@ -4,7 +4,7 @@ import { CartContext } from '../../context/CartContext'
 import '../Button/button.css';
 import Swal from 'sweetalert2';
 import { Navigate} from 'react-router-dom';
-
+import { motion } from 'framer-motion';
 
 const FinishPurchase = () => {
     const useCart = () => {
@@ -98,8 +98,11 @@ const FinishPurchase = () => {
     }
     return (
         <div className="containerP">
-            <h1>Completa tu Pedido</h1>
-            <form onSubmit={(e) => { e.preventDefault(); buyCart(e); }}>
+            <motion.h1 initial={{ scale: 0 }} animate={{ scale: 1}} transition={{duration: 1.2, ease: "easeInOut", delay: 0.5, type: "spring"}} 
+            className="titulo"
+            >Completa tu Pedido</motion.h1>
+            <motion.form initial={{ x: '-100vw' }} animate={{ x: 0 }} transition={{duration: 1.2, ease: "easeInOut", delay: 0.5, type: "spring"}}
+            onSubmit={(e) => { e.preventDefault(); buyCart(e); }}>
                 <div className="form">
                     <div className="form-group">
                         <label htmlFor="name">Nombre y Apellido:</label>
@@ -132,7 +135,7 @@ const FinishPurchase = () => {
 
 
                 <button className="Button" type='submit'>Comprar</button>
-            </form>
+            </motion.form>
         </div>
     );
 }

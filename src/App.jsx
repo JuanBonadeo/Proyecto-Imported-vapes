@@ -11,9 +11,25 @@ import ProductsContainer from './components/ProductsContainer/ProductsContainer'
 import FinishPurchase from './components/FinishPurchase/FinishPurchase'
 import Admin from './components/Admin/Admin'
 import { GraciasXtuCompra } from './components/GraciasXtuCompra/GraciasXtuCompra'
+import { useEffect } from 'react'
+import Swal from 'sweetalert2'
+import Toast from './context/CartContext'
 
 function App() {
-
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'bottom-end',
+      showConfirmButton: true,
+      timer: 10000,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+    Toast.fire({
+      title: 'Envio Gratis a partir de $30000',
+    })
+  
   return (
     <div className='App'>
     <BrowserRouter>

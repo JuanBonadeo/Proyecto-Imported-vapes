@@ -3,7 +3,7 @@ import Swal from 'sweetalert2'
 
 
 export const CartContext = createContext([])
- export const Toast = Swal.mixin({
+ const Toast = Swal.mixin({
   toast: true,
   position: 'bottom-end',
   showConfirmButton: false,
@@ -176,3 +176,4 @@ export const CartProvider = ({ children }) => {
     )
 }
 
+export default Toast
