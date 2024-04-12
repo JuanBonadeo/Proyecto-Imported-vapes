@@ -3,26 +3,38 @@ import { useEffect, useState, useContext } from 'react';
 import { CartContext } from '../../context/CartContext'
 import '../Button/button.css';
 import Swal from 'sweetalert2';
+import { Navigate } from 'react-router-dom';
 
 
 const FinishPurchase = () => {
     const useCart = () => {
         return useContext(CartContext)
     }
-    const { cart, total, calcularDescuento, formatearMoneda } = useCart();
-
+    const { cart, total, calcularDescuento, formatearMoneda, clearCart2 } = useCart();
+    const precioEnvio = 9000;
+    const precioEnvioGratis = 30000;
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+    const [entrega, setEntrega] = useState('envio');
+    let [totalFinal, setTotalFinal] = useState(total);
+
+    const handleChange = (event) => {
+        const selectedOption = event.target.value;
+        setEntrega(selectedOption);
+        if (selectedOption === 'envio') {
+            setTotalFinal(total + precioEnvio);
+        } else {
+            setTotalFinal(total);
+        }
+    };
 
 
     const buyCart = (e) => {
+
         const nombre = document.getElementById('name').value;
         const pago = document.getElementById('payment').value;
-        const entrega = document.getElementById('entrega').value;
         const domicilio = document.getElementById('address').value;
-        let totalConEnvio = 0;
-        let precioEnvio = 9000
         e.preventDefault();
         Swal.fire({
             title: 'Confirmar compra',
@@ -36,23 +48,22 @@ const FinishPurchase = () => {
                 let mensajePedido = 'Nombre y Apellido: ' + nombre + '\n';
                 mensajePedido += 'Metodo de Pago: ' + pago + '\n';
                 mensajePedido += 'Metodo de Entrega: ' + entrega + '\n';
-                mensajePedido += 'Domicilio: ' + domicilio + '\n\n';
                 if (entrega === 'envio') {
-                    mensajePedido += 'Costo de envio: $9000\n\n';
-                    totalConEnvio = total + precioEnvio;
+                    mensajePedido += 'Domicilio: ' + domicilio + '\n';
+                    mensajePedido += 'Costo de envio: '+ formatearMoneda(precioEnvio) + ' (envio gratis a partir de 30000\n';
+                    totalFinal = total + precioEnvio;
                 }
                 mensajePedido += 'pedido:\n';
                 cart.forEach((prod) => {
                     mensajePedido += `*${prod.nombre}*  Cantidad: *${prod.quantity}* Precio: *${calcularDescuento(prod.precio * prod.quantity, prod.descuento)}*\n`;
                 });
-                mensajePedido += `\nTotal: *${formatearMoneda(total)}*`;
-                if (entrega === 'envio' && total >= 30000) {
-                    totalConEnvio = total - precioEnvio;
-                    mensajePedido += `\nTotal Con Envio: *${formatearMoneda(totalConEnvio)}*`;
-                } else {
-                    mensajePedido += `\nTotal Con Envio: *${formatearMoneda(total)}*`;
-                }
+                if (entrega === 'envio' && total >= precioEnvioGratis) {
+                    mensajePedido += `\nTotal Con envio gratis: *${formatearMoneda(total)}*`;
+                } else if (entrega === 'envio' && total < precioEnvioGratis){
+                    mensajePedido += `\nTotal con ${precioEnvio} de envio: *${formatearMoneda(totalFinal)}*`;
+                } else mensajePedido += `\nTotal: *${formatearMoneda(total)}*`;
 
+                
                 // Completar con el número de WhatsApp
                 const numeroWhatsApp = '5493435409904';
 
@@ -74,7 +85,10 @@ const FinishPurchase = () => {
                 // Abrir la ventana de chat
                 window.open(urlWhatsApp, '_blank');
                 window.open(urlWhatsApp, '_blank');
-                clearCart();
+                clearCart2();
+                history.push('/');
+                
+
             }
         });
 
@@ -98,7 +112,7 @@ const FinishPurchase = () => {
                     </div>
                     <div className="form-group">
                         <label htmlFor='entrega'>Método de Entrega</label>
-                        <select name="entrega" id="entrega" required>
+                        <select name="entrega" id="entrega" required value={entrega} onChange={handleChange} >
                             <option value="envio">Envío a Domicilio</option>
                             <option value="retiro">Retiro en Local</option>
                         </select>
@@ -109,9 +123,11 @@ const FinishPurchase = () => {
                     </div>
                 </div>
 
-                <h4>Total Estimado: {`${formatearMoneda(total)} `}<br></br>
-                Envio gratis llevando mas de 30.000$ en productos.
-                </h4>
+                <h4>Total: {`${formatearMoneda(total)} ${entrega === 'envio' && total >= precioEnvioGratis ? ' envio gratis' : ''}
+                 ${entrega === 'envio' && total < precioEnvioGratis ? '+ ' + formatearMoneda(precioEnvio) + ' de envio' : ''}`}</h4>
+                {entrega === 'envio' && total < precioEnvioGratis && <h5>Envío gratis a partir de {formatearMoneda(precioEnvioGratis)}.</h5>}
+
+
                 <button className="Button" type='submit'>Comprar</button>
             </form>
         </div>
