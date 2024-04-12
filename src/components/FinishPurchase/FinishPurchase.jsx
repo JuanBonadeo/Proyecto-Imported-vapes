@@ -3,7 +3,7 @@ import { useEffect, useState, useContext } from 'react';
 import { CartContext } from '../../context/CartContext'
 import '../Button/button.css';
 import Swal from 'sweetalert2';
-import { Navigate } from 'react-router-dom';
+import { Navigate} from 'react-router-dom';
 
 
 const FinishPurchase = () => {
@@ -86,7 +86,10 @@ const FinishPurchase = () => {
                 window.open(urlWhatsApp, '_blank');
                 window.open(urlWhatsApp, '_blank');
                 clearCart2();
-                history.push('/');
+                const redirectHome = () => {
+                    window.location.href = "/#/gracias";
+                };
+                redirectHome();                
                 
 
             }

@@ -10,6 +10,7 @@ import ProductInfoView from './components/ProductInfo/ProudctInfoView'
 import ProductsContainer from './components/ProductsContainer/ProductsContainer'
 import FinishPurchase from './components/FinishPurchase/FinishPurchase'
 import Admin from './components/Admin/Admin'
+import { GraciasXtuCompra } from './components/GraciasXtuCompra/GraciasXtuCompra'
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="/productos" element={<ProductsContainer/>}/>
           <Route path="/terminarcompra" element={<FinishPurchase/>}/>
           <Route path='/admin123' element={<Admin/>}/>
+          <Route path='/gracias' element={<GraciasXtuCompra/>}/>
           
         </Routes>  
       </div>
