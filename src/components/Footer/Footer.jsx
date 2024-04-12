@@ -13,10 +13,10 @@ const Footer = () => {
             <div className='footer1'>
                 
                 <div className='footerLinks'>
-                    <Link to="/contacto"className="dark" label="Atencion al Cliente">Atencion al Cliente</Link>
+                    <Link to='https://wa.me/5493435409904' className="dark" label="Atencion al Cliente">Atencion al Cliente</Link>
                     <Link  className="dark"label="Preguntas Frecuentes">Preguntas Frecuentes</Link>
                     <Link className="dark" label="Terminos & Condiciones">Terminos & Condiciones</Link>
-                    <Link to="/quienesSomos" className="dark" label="Quienes Somos">Quienes Somos</Link>
+                    <Link to="https://wa.me/5493435409904" className="dark" label="Quienes Somos">Quienes Somos</Link>
                 </div>
                 <Logo className='logo light' />
             </div>
@@ -26,8 +26,8 @@ const Footer = () => {
                 <a href='https://github.com/JuanBonadeo'><GitHubIcon/></a>
                 <a><LinkedInIcon/></a>
             </div>
-            <h5>©Import Vapes Copyright  todos los derechos reservados</h5>
-            <h5>Develop by:   <a>JuanBonadeo</a></h5>
+            <h5>©Import Vapes Copyright  todos los derechos reservados.</h5>
+            <h5>Develop by:   JuanBonadeo</h5>
 
             
         </footer>
