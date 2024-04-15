@@ -9,7 +9,7 @@ export const Admin = () => {
     const addProduct = (e) => {
         e.preventDefault();
         const nombre = document.getElementById('nombre').value;
-        const precio = document.getElementById('precio').value;
+        const precio = parseInt.document.getElementById('precio').value;
         const descuento = document.getElementById('descuento').value;
         const stock = document.getElementById('stock').checked;
         const category = document.getElementById('category').value;
@@ -92,9 +92,9 @@ export const Admin = () => {
                     <input type="text" id="descripcion" name="descripcion" />
                     <label htmlFor="category">Categoría:</label>
                     <select name="category" id="category" required>
-                        <option value="mates">7000 puffs</option>
-                        <option value="yerbas">7500 puffs</option>
-                        <option value="bombillas">8000 puffs</option>
+                        <option value="7000 puff">7000 puffs</option>
+                        <option value="7500 puff">7500 puffs</option>
+                        <option value="8000 puff">8000 puffs</option>
                     </select>
                 </div>
                 <div className="form-group">
