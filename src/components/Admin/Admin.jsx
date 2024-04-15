@@ -9,8 +9,8 @@ export const Admin = () => {
     const addProduct = (e) => {
         e.preventDefault();
         const nombre = document.getElementById('nombre').value;
-        const precio = parseInt.document.getElementById('precio').value;
-        const descuento = document.getElementById('descuento').value;
+        const precio = parseInt(document.getElementById('precio').value);
+        const descuento = parseInt(document.getElementById('descuento').value);
         const stock = document.getElementById('stock').checked;
         const category = document.getElementById('category').value;
         const descripcion = document.getElementById('descripcion').value;
